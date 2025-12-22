@@ -1,21 +1,33 @@
-import json 
+import json
 import math
 import random
 
+# Shannon entropy
 def calculate_entropy(text):
-    probability = [float(text.count(c)) / len(text) for c in dict.fromkeys(list(text))]
-    entropy = - sum([p * math.log2(p) for p in probability])
-    return entropy
+    if not text:
+        return 0
+    probabilities = [text.count(c) / len(text) for c in set(text)]
+    return -sum(p * math.log2(p) for p in probabilities)
+
+# Common human words seen in normal requests
+WORDS = [
+    "login", "user", "email", "password", "data", "value",
+    "profile", "update", "submit", "form", "request",
+    "hello", "name", "message", "comment"
+]
 
 data = []
 
-for i in range(5000):
-    path_len = random.randint(5,30)
-    body_size = random.randint(20,500)
-    special_chars = random.randint(0,8)
-    query_params = random.randint(0,4)
+for _ in range(5000):
+    path_len = random.randint(5, 30)
+    body_size = random.randint(50, 400)
+    query_params = random.randint(0, 3)
+    special_chars = random.randint(0, 5)
 
-    body_text = "a" * body_size + "!" * special_chars
+    # Generate human-like structured body
+    words_count = body_size // 6
+    body_text = " ".join(random.choices(WORDS, k=words_count))
+
     entropy = calculate_entropy(body_text)
 
     sample = {
@@ -29,4 +41,7 @@ for i in range(5000):
 
     data.append(sample)
 
-json.dump(data,open("data/global_data_set.json","w"),indent=4)
+with open("data/global_data_set.json", "w") as f:
+    json.dump(data, f, indent=4)
+
+print("✅ Global dataset generated (human-like normal traffic)")
