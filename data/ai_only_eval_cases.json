@@ -1,0 +1,172 @@
+[
+  {
+    "id": "ai-normal-1",
+    "category": "benign",
+    "payload": {
+      "pathLength": 8,
+      "bodySize": 120,
+      "queryParams": 1,
+      "specialChars": 1,
+      "entropy": 1.2,
+      "methodPOST": 0,
+      "ipReqPerMin": 2,
+      "routeReqPerMin": 1,
+      "uniquePathsPerMin": 1,
+      "postRatioPerMin": 0.2
+    },
+    "expectedRisk": "low"
+  },
+  {
+    "id": "ai-normal-2",
+    "category": "benign",
+    "payload": {
+      "pathLength": 12,
+      "bodySize": 180,
+      "queryParams": 1,
+      "specialChars": 2,
+      "entropy": 1.6,
+      "methodPOST": 1,
+      "ipReqPerMin": 4,
+      "routeReqPerMin": 2,
+      "uniquePathsPerMin": 2,
+      "postRatioPerMin": 0.4
+    },
+    "expectedRisk": "low"
+  },
+  {
+    "id": "ai-suspicious-1",
+    "category": "suspicious",
+    "payload": {
+      "pathLength": 35,
+      "bodySize": 1200,
+      "queryParams": 4,
+      "specialChars": 18,
+      "entropy": 4.2,
+      "methodPOST": 1,
+      "ipReqPerMin": 15,
+      "routeReqPerMin": 10,
+      "uniquePathsPerMin": 8,
+      "postRatioPerMin": 0.9
+    },
+    "expectedRisk": "medium"
+  },
+  {
+    "id": "ai-suspicious-2",
+    "category": "suspicious",
+    "payload": {
+      "pathLength": 48,
+      "bodySize": 2200,
+      "queryParams": 6,
+      "specialChars": 28,
+      "entropy": 5.1,
+      "methodPOST": 1,
+      "ipReqPerMin": 30,
+      "routeReqPerMin": 18,
+      "uniquePathsPerMin": 15,
+      "postRatioPerMin": 1.0
+    },
+    "expectedRisk": "medium"
+  },
+  {
+    "id": "ai-bot-burst-1",
+    "category": "bot",
+    "payload": {
+      "pathLength": 24,
+      "bodySize": 420,
+      "queryParams": 2,
+      "specialChars": 6,
+      "entropy": 2.8,
+      "methodPOST": 1,
+      "ipReqPerMin": 95,
+      "routeReqPerMin": 70,
+      "uniquePathsPerMin": 35,
+      "postRatioPerMin": 1.0
+    },
+    "expectedRisk": "medium"
+  },
+  {
+    "id": "ai-bot-burst-2",
+    "category": "bot",
+    "payload": {
+      "pathLength": 28,
+      "bodySize": 600,
+      "queryParams": 3,
+      "specialChars": 10,
+      "entropy": 3.4,
+      "methodPOST": 1,
+      "ipReqPerMin": 120,
+      "routeReqPerMin": 90,
+      "uniquePathsPerMin": 40,
+      "postRatioPerMin": 1.0
+    },
+    "expectedRisk": "medium"
+  },
+  {
+    "id": "ai-extreme-anomaly-1",
+    "category": "attack",
+    "payload": {
+      "pathLength": 120,
+      "bodySize": 8000,
+      "queryParams": 14,
+      "specialChars": 80,
+      "entropy": 7.2,
+      "methodPOST": 1,
+      "ipReqPerMin": 140,
+      "routeReqPerMin": 110,
+      "uniquePathsPerMin": 45,
+      "postRatioPerMin": 1.0
+    },
+    "expectedRisk": "high"
+  },
+  {
+    "id": "ai-extreme-anomaly-2",
+    "category": "attack",
+    "payload": {
+      "pathLength": 160,
+      "bodySize": 12000,
+      "queryParams": 20,
+      "specialChars": 140,
+      "entropy": 8.0,
+      "methodPOST": 1,
+      "ipReqPerMin": 200,
+      "routeReqPerMin": 140,
+      "uniquePathsPerMin": 50,
+      "postRatioPerMin": 1.0
+    },
+    "expectedRisk": "high"
+  },
+  {
+    "id": "ai-large-body-low-rate",
+    "category": "edge",
+    "payload": {
+      "pathLength": 42,
+      "bodySize": 9000,
+      "queryParams": 2,
+      "specialChars": 12,
+      "entropy": 3.2,
+      "methodPOST": 1,
+      "ipReqPerMin": 4,
+      "routeReqPerMin": 3,
+      "uniquePathsPerMin": 2,
+      "postRatioPerMin": 0.4
+    },
+    "expectedRisk": "medium"
+  },
+  {
+    "id": "ai-high-entropy-low-rate",
+    "category": "edge",
+    "payload": {
+      "pathLength": 20,
+      "bodySize": 650,
+      "queryParams": 1,
+      "specialChars": 30,
+      "entropy": 7.8,
+      "methodPOST": 0,
+      "ipReqPerMin": 3,
+      "routeReqPerMin": 2,
+      "uniquePathsPerMin": 2,
+      "postRatioPerMin": 0.1
+    },
+    "expectedRisk": "medium"
+  }
+]

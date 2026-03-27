@@ -1,0 +1,38 @@
+[
+  {
+    "id": "benign-1",
+    "features": {
+      "pathLength": 10,
+      "bodySize": 120,
+      "queryParams": 1,
+      "specialChars": 1,
+      "entropy": 1.3,
+      "methodPOST": 0
+    },
+    "expectedRisk": "low"
+  },
+  {
+    "id": "suspicious-1",
+    "features": {
+      "pathLength": 25,
+      "bodySize": 700,
+      "queryParams": 3,
+      "specialChars": 8,
+      "entropy": 3.8,
+      "methodPOST": 1
+    },
+    "expectedRisk": "medium"
+  },
+  {
+    "id": "attack-1",
+    "features": {
+      "pathLength": 80,
+      "bodySize": 6000,
+      "queryParams": 10,
+      "specialChars": 40,
+      "entropy": 6.5,
+      "methodPOST": 1
+    },
+    "expectedRisk": "high"
+  }
+]

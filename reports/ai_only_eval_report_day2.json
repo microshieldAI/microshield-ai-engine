@@ -1,0 +1,120 @@
+{
+  "mode": "ai",
+  "ai": {
+    "total": 10,
+    "contractOk": 10,
+    "expectedRiskMatch": 4,
+    "rows": [
+      {
+        "id": "ai-normal-1",
+        "status": 200,
+        "latencyMs": 106.5,
+        "score": 0.4038,
+        "risk": "low",
+        "expectedRisk": "low",
+        "expectedMatch": true,
+        "contractOk": true,
+        "reason": "ok"
+      },
+      {
+        "id": "ai-normal-2",
+        "status": 200,
+        "latencyMs": 48.9,
+        "score": 0.4044,
+        "risk": "low",
+        "expectedRisk": "low",
+        "expectedMatch": true,
+        "contractOk": true,
+        "reason": "ok"
+      },
+      {
+        "id": "ai-suspicious-1",
+        "status": 200,
+        "latencyMs": 50.0,
+        "score": 0.4437,
+        "risk": "low",
+        "expectedRisk": "medium",
+        "expectedMatch": false,
+        "contractOk": true,
+        "reason": "ok"
+      },
+      {
+        "id": "ai-suspicious-2",
+        "status": 200,
+        "latencyMs": 27.1,
+        "score": 0.469,
+        "risk": "low",
+        "expectedRisk": "medium",
+        "expectedMatch": false,
+        "contractOk": true,
+        "reason": "ok"
+      },
+      {
+        "id": "ai-bot-burst-1",
+        "status": 200,
+        "latencyMs": 35.5,
+        "score": 0.622,
+        "risk": "medium",
+        "expectedRisk": "medium",
+        "expectedMatch": true,
+        "contractOk": true,
+        "reason": "ok"
+      },
+      {
+        "id": "ai-bot-burst-2",
+        "status": 200,
+        "latencyMs": 50.8,
+        "score": 0.6728,
+        "risk": "medium",
+        "expectedRisk": "medium",
+        "expectedMatch": true,
+        "contractOk": true,
+        "reason": "ok"
+      },
+      {
+        "id": "ai-extreme-anomaly-1",
+        "status": 200,
+        "latencyMs": 41.8,
+        "score": 0.6502,
+        "risk": "medium",
+        "expectedRisk": "high",
+        "expectedMatch": false,
+        "contractOk": true,
+        "reason": "ok"
+      },
+      {
+        "id": "ai-extreme-anomaly-2",
+        "status": 200,
+        "latencyMs": 36.2,
+        "score": 0.6502,
+        "risk": "medium",
+        "expectedRisk": "high",
+        "expectedMatch": false,
+        "contractOk": true,
+        "reason": "ok"
+      },
+      {
+        "id": "ai-large-body-low-rate",
+        "status": 200,
+        "latencyMs": 56.0,
+        "score": 0.4956,
+        "risk": "low",
+        "expectedRisk": "medium",
+        "expectedMatch": false,
+        "contractOk": true,
+        "reason": "ok"
+      },
+      {
+        "id": "ai-high-entropy-low-rate",
+        "status": 200,
+        "latencyMs": 61.5,
+        "score": 0.3525,
+        "risk": "low",
+        "expectedRisk": "medium",
+        "expectedMatch": false,
+        "contractOk": true,
+        "reason": "ok"
+      }
+    ]
+  }
+}

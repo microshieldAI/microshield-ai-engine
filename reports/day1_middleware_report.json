@@ -1,0 +1,1257 @@
+{
+  "mode": "middleware",
+  "middleware": {
+    "total": 54,
+    "sourceCounts": {
+      "RATE_LIMIT": 54
+    },
+    "sourceMatch": 0,
+    "blockedMatch": 46,
+    "categoryStats": {
+      "benign": {
+        "total": 3,
+        "blocked": 3,
+        "sourceMatch": 0,
+        "blockedMatch": 0,
+        "sources": {
+          "RATE_LIMIT": 3
+        }
+      },
+      "sqli": {
+        "total": 4,
+        "blocked": 4,
+        "sourceMatch": 0,
+        "blockedMatch": 4,
+        "sources": {
+          "RATE_LIMIT": 4
+        }
+      },
+      "xss": {
+        "total": 4,
+        "blocked": 4,
+        "sourceMatch": 0,
+        "blockedMatch": 4,
+        "sources": {
+          "RATE_LIMIT": 4
+        }
+      },
+      "path": {
+        "total": 3,
+        "blocked": 3,
+        "sourceMatch": 0,
+        "blockedMatch": 3,
+        "sources": {
+          "RATE_LIMIT": 3
+        }
+      },
+      "cmd": {
+        "total": 3,
+        "blocked": 3,
+        "sourceMatch": 0,
+        "blockedMatch": 3,
+        "sources": {
+          "RATE_LIMIT": 3
+        }
+      },
+      "scanner": {
+        "total": 7,
+        "blocked": 7,
+        "sourceMatch": 0,
+        "blockedMatch": 7,
+        "sources": {
+          "RATE_LIMIT": 7
+        }
+      },
+      "ua": {
+        "total": 14,
+        "blocked": 14,
+        "sourceMatch": 0,
+        "blockedMatch": 14,
+        "sources": {
+          "RATE_LIMIT": 14
+        }
+      },
+      "json": {
+        "total": 1,
+        "blocked": 1,
+        "sourceMatch": 0,
+        "blockedMatch": 1,
+        "sources": {
+          "RATE_LIMIT": 1
+        }
+      },
+      "bot": {
+        "total": 2,
+        "blocked": 2,
+        "sourceMatch": 0,
+        "blockedMatch": 2,
+        "sources": {
+          "RATE_LIMIT": 2
+        }
+      },
+      "encoded": {
+        "total": 2,
+        "blocked": 2,
+        "sourceMatch": 0,
+        "blockedMatch": 2,
+        "sources": {
+          "RATE_LIMIT": 2
+        }
+      },
+      "command": {
+        "total": 1,
+        "blocked": 1,
+        "sourceMatch": 0,
+        "blockedMatch": 1,
+        "sources": {
+          "RATE_LIMIT": 1
+        }
+      },
+      "recon": {
+        "total": 2,
+        "blocked": 2,
+        "sourceMatch": 0,
+        "blockedMatch": 2,
+        "sources": {
+          "RATE_LIMIT": 2
+        }
+      },
+      "mixed": {
+        "total": 5,
+        "blocked": 5,
+        "sourceMatch": 0,
+        "blockedMatch": 0,
+        "sources": {
+          "RATE_LIMIT": 5
+        }
+      },
+      "suspicious": {
+        "total": 3,
+        "blocked": 3,
+        "sourceMatch": 0,
+        "blockedMatch": 3,
+        "sources": {
+          "RATE_LIMIT": 3
+        }
+      }
+    },
+    "rows": [
+      {
+        "id": "benign-login-1",
+        "category": "benign",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 53.7,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "benign-login-2",
+        "category": "benign",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 17.2,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "benign-home-get",
+        "category": "benign",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.8,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "sqli-basic-1",
+        "category": "sqli",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 13.5,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "sqli-basic-2",
+        "category": "sqli",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.7,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "sqli-time-based",
+        "category": "sqli",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.1,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "sqli-information-schema",
+        "category": "sqli",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 27.5,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "xss-script-tag",
+        "category": "xss",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.8,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "xss-svg-onload",
+        "category": "xss",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 26.7,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "xss-javascript-url",
+        "category": "xss",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 15.9,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "path-traversal-1",
+        "category": "path",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.8,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "path-traversal-2",
+        "category": "path",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 29.3,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "path-traversal-encoded",
+        "category": "path",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 5.0,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "cmd-injection-1",
+        "category": "cmd",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.7,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "cmd-injection-2",
+        "category": "cmd",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.2,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "cmd-injection-3",
+        "category": "cmd",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 15.5,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "scanner-path-env",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/.env",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 15.6,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "scanner-path-git",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/.git/config",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.8,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "scanner-path-wp-admin",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/wp-admin",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.6,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "scanner-path-phpmyadmin",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/phpmyadmin",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.7,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "scanner-path-server-status",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/server-status",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.8,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-sqlmap",
+        "category": "ua",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 23.4,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-hydra",
+        "category": "ua",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.0,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-ffuf",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.6,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-wfuzz",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.6,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-gobuster",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.0,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-dirbuster",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.5,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-nmap",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.5,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-nikto",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.4,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-masscan",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.7,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-zgrab",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.9,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-python-requests",
+        "category": "ua",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 14.0,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-go-http-client",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 15.2,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "json-content-type-empty-body",
+        "category": "json",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.7,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "STATIC_RULE",
+          "AI_ENGINE"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "bot-burst-login-95",
+        "category": "bot",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 95,
+        "blockedAttempts": 95,
+        "status": 429,
+        "latencyMs": 1.6,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "bot-burst-home-100",
+        "category": "bot",
+        "method": "GET",
+        "path": "/",
+        "repeats": 100,
+        "blockedAttempts": 100,
+        "status": 429,
+        "latencyMs": 1.4,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "encoded-sqli-double",
+        "category": "encoded",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 12.4,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "encoded-traversal-double",
+        "category": "encoded",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 14.8,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "xss-obfuscated-alert",
+        "category": "xss",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 15.6,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "command-subshell",
+        "category": "command",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.2,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "recon-actuator",
+        "category": "recon",
+        "method": "GET",
+        "path": "/actuator",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.7,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "recon-aws-creds",
+        "category": "recon",
+        "method": "GET",
+        "path": "/.aws/credentials",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.7,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "mixed-benign-1",
+        "category": "mixed",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.0,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "mixed-benign-2",
+        "category": "mixed",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.3,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "mixed-benign-3",
+        "category": "mixed",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.5,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "mixed-benign-4",
+        "category": "mixed",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.6,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "mixed-benign-5",
+        "category": "mixed",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.2,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "suspicious-high-entropy-1",
+        "category": "suspicious",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.0,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "STATIC_RULE"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": null,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "suspicious-high-entropy-2",
+        "category": "suspicious",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 2.3,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "STATIC_RULE"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": null,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "suspicious-long-specials",
+        "category": "suspicious",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.9,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": [
+          "AI_ENGINE",
+          "STATIC_RULE"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": null,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-sqlmap-plus-sqli",
+        "category": "ua",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 1.8,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "ua-hydra-bruteforce-repeat",
+        "category": "ua",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 20,
+        "blockedAttempts": 20,
+        "status": 429,
+        "latencyMs": 1.9,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "scanner-path-wp-login",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/wp-login.php",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 429,
+        "latencyMs": 15.6,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      },
+      {
+        "id": "scanner-multi-path-burst",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/.env",
+        "repeats": 10,
+        "blockedAttempts": 10,
+        "status": 429,
+        "latencyMs": 1.3,
+        "blocked": true,
+        "source": "RATE_LIMIT",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": false,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "Too many requests, please try again later."
+        }
+      }
+    ]
+  }
+}

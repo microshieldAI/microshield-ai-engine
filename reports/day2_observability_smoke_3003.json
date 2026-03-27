@@ -1,0 +1,91 @@
+{
+  "mode": "middleware",
+  "middleware": {
+    "total": 3,
+    "sourceCounts": {
+      "STATIC_RULE": 2,
+      "AI_ENGINE": 1
+    },
+    "sourceMatch": 3,
+    "blockedMatch": 3,
+    "categoryStats": {
+      "mw": {
+        "total": 3,
+        "blocked": 3,
+        "sourceMatch": 3,
+        "blockedMatch": 3,
+        "sources": {
+          "STATIC_RULE": 2,
+          "AI_ENGINE": 1
+        }
+      }
+    },
+    "rows": [
+      {
+        "id": "mw-static-sqli",
+        "category": "mw",
+        "method": "POST",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 111.5,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SQLI_PATTERN"
+        }
+      },
+      {
+        "id": "mw-static-xss",
+        "category": "mw",
+        "method": "POST",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 38.6,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "XSS_PATTERN"
+        }
+      },
+      {
+        "id": "mw-ai-path",
+        "category": "mw",
+        "method": "POST",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 82.9,
+        "blocked": true,
+        "source": "AI_ENGINE",
+        "expectedSource": "AI_ENGINE",
+        "sourceMatch": true,
+        "expectedBlocked": null,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (AI risk)",
+          "source": "AI_ENGINE"
+        }
+      }
+    ]
+  }
+}

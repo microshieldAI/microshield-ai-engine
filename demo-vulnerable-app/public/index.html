@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopLite Demo Portal</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <h1>ShopLite Internal Portal</h1>
+        <p>Demo app with intentionally weak backend behavior for manual security testing.</p>
+      </header>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Login</h2>
+          <form id="loginForm">
+            <label>Username <input name="username" value="analyst" /></label>
+            <label>Password <input name="password" value="password123" /></label>
+            <button type="submit">Send</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Search</h2>
+          <form id="searchForm">
+            <label>Query <input name="q" value="laptop' OR 1=1--" /></label>
+            <button type="submit">Run</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Users Listing</h2>
+          <form id="usersForm">
+            <label>Sort <input name="sort" value="username" /></label>
+            <button type="submit">Fetch</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Orders</h2>
+          <form id="ordersForm">
+            <label>User Filter <input name="user" value="analyst" /></label>
+            <button type="submit">Fetch</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Comment</h2>
+          <form id="commentForm">
+            <label>Text <textarea name="text" rows="3"><script>alert(1)</script></textarea></label>
+            <button type="submit">Post</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>File Preview</h2>
+          <form id="fileForm">
+            <label>Path <input name="path" value="docs/guide.txt" /></label>
+            <button type="submit">Load</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Admin Runner</h2>
+          <form id="adminRunForm">
+            <label>Task <input name="task" value="cat /etc/passwd" /></label>
+            <button type="submit">Execute</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Export</h2>
+          <form id="exportForm">
+            <label>Format <input name="format" value="sql" /></label>
+            <button type="submit">Download</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>XML Import</h2>
+          <form id="xmlForm">
+            <label>XML
+              <textarea name="xml" rows="3"><!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd">]><root>&xxe;</root></textarea>
+            </label>
+            <button type="submit">Send XML</button>
+          </form>
+        </article>
+
+        <article class="card">
+          <h2>Path Probe</h2>
+          <form id="probeForm">
+            <label>Path <input name="path" value="/phpmyadmin" /></label>
+            <button type="submit">Probe</button>
+          </form>
+        </article>
+      </section>
+
+      <section class="card output-wrap">
+        <div class="output-header">
+          <h2>Manual Request Console</h2>
+        </div>
+        <form id="customRequestForm" class="custom-grid">
+          <label>Method
+            <select name="method">
+              <option>GET</option>
+              <option>POST</option>
+              <option>PUT</option>
+              <option>DELETE</option>
+            </select>
+          </label>
+          <label>Path
+            <input name="path" value="/api/search?q=' OR 1=1--" />
+          </label>
+          <label>JSON Body (optional)
+            <textarea name="body" rows="3">{"username":"admin","password":"test"}</textarea>
+          </label>
+          <button type="submit">Send Request</button>
+        </form>
+      </section>
+
+      <section class="card output-wrap">
+        <div class="output-header">
+          <h2>Response</h2>
+          <button id="clearBtn" type="button">Clear</button>
+        </div>
+        <pre id="output">Run any action to see API response...</pre>
+      </section>
+    </main>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

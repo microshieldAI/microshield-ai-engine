@@ -1,0 +1,1358 @@
+{
+  "mode": "middleware",
+  "middleware": {
+    "total": 54,
+    "sourceCounts": {
+      "AI_ENGINE": 4,
+      "STATIC_RULE": 50
+    },
+    "sourceMatch": 49,
+    "blockedMatch": 48,
+    "categoryStats": {
+      "benign": {
+        "total": 3,
+        "blocked": 0,
+        "sourceMatch": 3,
+        "blockedMatch": 3,
+        "sources": {
+          "AI_ENGINE": 3
+        }
+      },
+      "sqli": {
+        "total": 4,
+        "blocked": 4,
+        "sourceMatch": 4,
+        "blockedMatch": 4,
+        "sources": {
+          "STATIC_RULE": 4
+        }
+      },
+      "xss": {
+        "total": 4,
+        "blocked": 4,
+        "sourceMatch": 4,
+        "blockedMatch": 4,
+        "sources": {
+          "STATIC_RULE": 4
+        }
+      },
+      "path": {
+        "total": 3,
+        "blocked": 3,
+        "sourceMatch": 3,
+        "blockedMatch": 3,
+        "sources": {
+          "STATIC_RULE": 3
+        }
+      },
+      "cmd": {
+        "total": 3,
+        "blocked": 3,
+        "sourceMatch": 3,
+        "blockedMatch": 3,
+        "sources": {
+          "STATIC_RULE": 3
+        }
+      },
+      "scanner": {
+        "total": 7,
+        "blocked": 7,
+        "sourceMatch": 7,
+        "blockedMatch": 7,
+        "sources": {
+          "STATIC_RULE": 7
+        }
+      },
+      "ua": {
+        "total": 14,
+        "blocked": 14,
+        "sourceMatch": 14,
+        "blockedMatch": 14,
+        "sources": {
+          "STATIC_RULE": 14
+        }
+      },
+      "json": {
+        "total": 1,
+        "blocked": 0,
+        "sourceMatch": 1,
+        "blockedMatch": 0,
+        "sources": {
+          "AI_ENGINE": 1
+        }
+      },
+      "bot": {
+        "total": 2,
+        "blocked": 2,
+        "sourceMatch": 2,
+        "blockedMatch": 2,
+        "sources": {
+          "STATIC_RULE": 2
+        }
+      },
+      "encoded": {
+        "total": 2,
+        "blocked": 2,
+        "sourceMatch": 2,
+        "blockedMatch": 2,
+        "sources": {
+          "STATIC_RULE": 2
+        }
+      },
+      "command": {
+        "total": 1,
+        "blocked": 1,
+        "sourceMatch": 1,
+        "blockedMatch": 1,
+        "sources": {
+          "STATIC_RULE": 1
+        }
+      },
+      "recon": {
+        "total": 2,
+        "blocked": 2,
+        "sourceMatch": 2,
+        "blockedMatch": 2,
+        "sources": {
+          "STATIC_RULE": 2
+        }
+      },
+      "mixed": {
+        "total": 5,
+        "blocked": 5,
+        "sourceMatch": 0,
+        "blockedMatch": 0,
+        "sources": {
+          "STATIC_RULE": 5
+        }
+      },
+      "suspicious": {
+        "total": 3,
+        "blocked": 3,
+        "sourceMatch": 3,
+        "blockedMatch": 3,
+        "sources": {
+          "STATIC_RULE": 3
+        }
+      }
+    },
+    "rows": [
+      {
+        "id": "benign-login-1",
+        "category": "benign",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 0,
+        "status": 200,
+        "latencyMs": 53.4,
+        "blocked": false,
+        "source": "AI_ENGINE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": true,
+        "expectedBlocked": false,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "message": "Login successful"
+        }
+      },
+      {
+        "id": "benign-login-2",
+        "category": "benign",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 0,
+        "status": 200,
+        "latencyMs": 2.3,
+        "blocked": false,
+        "source": "AI_ENGINE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": true,
+        "expectedBlocked": false,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "message": "Login successful"
+        }
+      },
+      {
+        "id": "benign-home-get",
+        "category": "benign",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 0,
+        "status": 200,
+        "latencyMs": 16.0,
+        "blocked": false,
+        "source": "AI_ENGINE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": true,
+        "expectedBlocked": false,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "raw": "MicroShield Test App Running"
+        }
+      },
+      {
+        "id": "sqli-basic-1",
+        "category": "sqli",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 15.7,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SQLI_PATTERN"
+        }
+      },
+      {
+        "id": "sqli-basic-2",
+        "category": "sqli",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.7,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SQLI_PATTERN"
+        }
+      },
+      {
+        "id": "sqli-time-based",
+        "category": "sqli",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 12.6,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SQLI_PATTERN"
+        }
+      },
+      {
+        "id": "sqli-information-schema",
+        "category": "sqli",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.9,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SQLI_PATTERN"
+        }
+      },
+      {
+        "id": "xss-script-tag",
+        "category": "xss",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 27.2,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "XSS_PATTERN"
+        }
+      },
+      {
+        "id": "xss-svg-onload",
+        "category": "xss",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.4,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "XSS_PATTERN"
+        }
+      },
+      {
+        "id": "xss-javascript-url",
+        "category": "xss",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 12.7,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "XSS_PATTERN"
+        }
+      },
+      {
+        "id": "path-traversal-1",
+        "category": "path",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 3.0,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "PATH_TRAVERSAL"
+        }
+      },
+      {
+        "id": "path-traversal-2",
+        "category": "path",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 12.4,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "PATH_TRAVERSAL"
+        }
+      },
+      {
+        "id": "path-traversal-encoded",
+        "category": "path",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 15.6,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "PATH_TRAVERSAL"
+        }
+      },
+      {
+        "id": "cmd-injection-1",
+        "category": "cmd",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.3,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "PATH_TRAVERSAL"
+        }
+      },
+      {
+        "id": "cmd-injection-2",
+        "category": "cmd",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.9,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "COMMAND_INJECTION"
+        }
+      },
+      {
+        "id": "cmd-injection-3",
+        "category": "cmd",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.5,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "COMMAND_INJECTION"
+        }
+      },
+      {
+        "id": "scanner-path-env",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/.env",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.2,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SCANNER_PATH"
+        }
+      },
+      {
+        "id": "scanner-path-git",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/.git/config",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.5,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SCANNER_PATH"
+        }
+      },
+      {
+        "id": "scanner-path-wp-admin",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/wp-admin",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 1.9,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SCANNER_PATH"
+        }
+      },
+      {
+        "id": "scanner-path-phpmyadmin",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/phpmyadmin",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 13.2,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SCANNER_PATH"
+        }
+      },
+      {
+        "id": "scanner-path-server-status",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/server-status",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 15.8,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SCANNER_PATH"
+        }
+      },
+      {
+        "id": "ua-sqlmap",
+        "category": "ua",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 14.9,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-hydra",
+        "category": "ua",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 15.6,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-ffuf",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.4,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-wfuzz",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 12.7,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-gobuster",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.3,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-dirbuster",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 12.5,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-nmap",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.5,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-nikto",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.4,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-masscan",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 24.6,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-zgrab",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 14.9,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-python-requests",
+        "category": "ua",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 3.0,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "ua-go-http-client",
+        "category": "ua",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 27.3,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "json-content-type-empty-body",
+        "category": "json",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 0,
+        "status": 200,
+        "latencyMs": 14.1,
+        "blocked": false,
+        "source": "AI_ENGINE",
+        "expectedSource": [
+          "STATIC_RULE",
+          "AI_ENGINE"
+        ],
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "message": "Login successful"
+        }
+      },
+      {
+        "id": "bot-burst-login-95",
+        "category": "bot",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 95,
+        "blockedAttempts": 39,
+        "status": 403,
+        "latencyMs": 12.9,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (bot burst)",
+          "source": "STATIC_RULE",
+          "ruleId": "BOT_BURST_RATE"
+        }
+      },
+      {
+        "id": "bot-burst-home-100",
+        "category": "bot",
+        "method": "GET",
+        "path": "/",
+        "repeats": 100,
+        "blockedAttempts": 100,
+        "status": 403,
+        "latencyMs": 2.2,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (bot burst)",
+          "source": "STATIC_RULE",
+          "ruleId": "BOT_BURST_RATE"
+        }
+      },
+      {
+        "id": "encoded-sqli-double",
+        "category": "encoded",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.3,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SQLI_PATTERN"
+        }
+      },
+      {
+        "id": "encoded-traversal-double",
+        "category": "encoded",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 26.1,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "PATH_TRAVERSAL"
+        }
+      },
+      {
+        "id": "xss-obfuscated-alert",
+        "category": "xss",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 14.9,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "XSS_PATTERN"
+        }
+      },
+      {
+        "id": "command-subshell",
+        "category": "command",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.3,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "COMMAND_INJECTION"
+        }
+      },
+      {
+        "id": "recon-actuator",
+        "category": "recon",
+        "method": "GET",
+        "path": "/actuator",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 27.3,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SCANNER_PATH"
+        }
+      },
+      {
+        "id": "recon-aws-creds",
+        "category": "recon",
+        "method": "GET",
+        "path": "/.aws/credentials",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.5,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SCANNER_PATH"
+        }
+      },
+      {
+        "id": "mixed-benign-1",
+        "category": "mixed",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.9,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "error": "Blocked (bot burst)",
+          "source": "STATIC_RULE",
+          "ruleId": "BOT_BURST_RATE"
+        }
+      },
+      {
+        "id": "mixed-benign-2",
+        "category": "mixed",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 25.1,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "error": "Blocked (bot burst)",
+          "source": "STATIC_RULE",
+          "ruleId": "BOT_BURST_RATE"
+        }
+      },
+      {
+        "id": "mixed-benign-3",
+        "category": "mixed",
+        "method": "GET",
+        "path": "/",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 15.8,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "error": "Blocked (bot burst)",
+          "source": "STATIC_RULE",
+          "ruleId": "BOT_BURST_RATE"
+        }
+      },
+      {
+        "id": "mixed-benign-4",
+        "category": "mixed",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 15.6,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "error": "Blocked (bot burst)",
+          "source": "STATIC_RULE",
+          "ruleId": "BOT_BURST_RATE"
+        }
+      },
+      {
+        "id": "mixed-benign-5",
+        "category": "mixed",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 16.1,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "UNKNOWN"
+        ],
+        "sourceMatch": false,
+        "expectedBlocked": false,
+        "blockedMatch": false,
+        "error": "",
+        "body": {
+          "error": "Blocked (bot burst)",
+          "source": "STATIC_RULE",
+          "ruleId": "BOT_BURST_RATE"
+        }
+      },
+      {
+        "id": "suspicious-high-entropy-1",
+        "category": "suspicious",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 15.5,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "STATIC_RULE"
+        ],
+        "sourceMatch": true,
+        "expectedBlocked": null,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (bot burst)",
+          "source": "STATIC_RULE",
+          "ruleId": "BOT_BURST_RATE"
+        }
+      },
+      {
+        "id": "suspicious-high-entropy-2",
+        "category": "suspicious",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.5,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "STATIC_RULE"
+        ],
+        "sourceMatch": true,
+        "expectedBlocked": null,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (bot burst)",
+          "source": "STATIC_RULE",
+          "ruleId": "BOT_BURST_RATE"
+        }
+      },
+      {
+        "id": "suspicious-long-specials",
+        "category": "suspicious",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.3,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": [
+          "AI_ENGINE",
+          "STATIC_RULE"
+        ],
+        "sourceMatch": true,
+        "expectedBlocked": null,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "COMMAND_INJECTION"
+        }
+      },
+      {
+        "id": "ua-sqlmap-plus-sqli",
+        "category": "ua",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 2.2,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SQLI_PATTERN"
+        }
+      },
+      {
+        "id": "ua-hydra-bruteforce-repeat",
+        "category": "ua",
+        "method": "POST",
+        "path": "/login",
+        "repeats": 20,
+        "blockedAttempts": 20,
+        "status": 403,
+        "latencyMs": 16.0,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SUSPICIOUS_UA"
+        }
+      },
+      {
+        "id": "scanner-path-wp-login",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/wp-login.php",
+        "repeats": 1,
+        "blockedAttempts": 1,
+        "status": 403,
+        "latencyMs": 14.9,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SCANNER_PATH"
+        }
+      },
+      {
+        "id": "scanner-multi-path-burst",
+        "category": "scanner",
+        "method": "GET",
+        "path": "/.env",
+        "repeats": 10,
+        "blockedAttempts": 10,
+        "status": 403,
+        "latencyMs": 13.0,
+        "blocked": true,
+        "source": "STATIC_RULE",
+        "expectedSource": "STATIC_RULE",
+        "sourceMatch": true,
+        "expectedBlocked": true,
+        "blockedMatch": true,
+        "error": "",
+        "body": {
+          "error": "Blocked (static rule)",
+          "source": "STATIC_RULE",
+          "ruleId": "SCANNER_PATH"
+        }
+      }
+    ]
+  }
+}

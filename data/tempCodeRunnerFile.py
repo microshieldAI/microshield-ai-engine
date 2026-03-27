@@ -16,7 +16,7 @@ FEATURE_ORDER = [
     "methodPOST"
 ]
 
-normal_sample = np.array([[12 , 150 , 1 , 3 , 1.2, 1]])
+normal_sample = np.array([[12 , 150 , 1 , 3 , 3, 1]])
 normal_scaled = scaler.transform(normal_sample)
 normal_pred = model.predict(normal_scaled)
 print(f"Normal sample prediction (1=normal, -1=anomaly): {normal_pred}")

